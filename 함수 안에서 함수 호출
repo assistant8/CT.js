@@ -1,0 +1,6 @@
+function solution() {
+  function add(x, y) {
+    return x + y;
+  }
+  return add;
+}
