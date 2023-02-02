@@ -1,0 +1,12 @@
+// solution 함수 안에서 지시사항을 수행해보세요.
+function solution(str) {
+    const str1 = str.split(' ')
+    console.log(str1)
+  var answer = [typeof(str1), str1[0]];
+
+  return answer;
+}
+
+
+// 실행 혹은 제출을 위한 코드입니다. 지우거나 수정하지 말아주세요.
+module.exports = solution;
