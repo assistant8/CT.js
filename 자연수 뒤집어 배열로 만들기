@@ -1,0 +1,10 @@
+function solution(n) {
+    var answer = [];
+    var str1 = n.toString()
+        
+    for(var i=1;i<str1.length+1;i++) {
+        answer.push(Math.floor((n%(10**i))/10**(i-1)))
+    }
+    
+    return answer;
+}
