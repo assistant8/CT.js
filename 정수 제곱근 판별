@@ -1,0 +1,13 @@
+function solution(n) {
+    var answer = -1;
+    for(var i=0; i<80000000; i++) {
+        if(n==i**2) {
+            answer=(i+1)**2;
+            break;
+        }
+    }
+    return answer;
+}
+
+// 121	144
+// 3	-1
