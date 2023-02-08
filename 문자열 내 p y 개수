@@ -1,0 +1,15 @@
+function solution(s){
+    var answer = true;
+    let countp = 0;
+    let county = 0;
+    
+    for(var i=0; i<s.length; i++) {
+        if(s[i] == 'p' || s[i] == 'P') countp++
+        if(s[i] == 'y' || s[i] == 'Y') county++
+    }
+    
+    if(countp !== county) answer = false;
+
+
+    return answer;
+}
