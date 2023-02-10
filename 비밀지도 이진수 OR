@@ -1,0 +1,16 @@
+function solution(n, arr1, arr2) {
+    var answer = [];
+    var arr3 = []
+    
+    for(var i=0; i<n; i++) {
+        arr3[i] = arr1[i] | arr2[i]
+        var temp = (arr3[i].toString(2))
+        temp = temp.padStart(n, '0')
+        for(var k=0; k<n; k++) {            
+            temp = temp.replace('1', '#')
+            temp = temp.replace('0', ' ')
+        }        
+        answer[i] = temp
+    }
+    return answer;
+}
