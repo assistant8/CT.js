@@ -2,8 +2,11 @@ function solution(s) {
     var answer = 0;
     var i = 0
     var str = ""
-    while(s[i]!=" ") {
-        if(s[i]<58) str+=s[i] //숫자면 그대로 str에 붙임
+    while(s[i]!=undefined) {
+        if(s[i]<58) {
+            str+=s[i] //숫자면 그대로 str에 붙임
+            i++
+        }
         else {
             if(s[i]=='z'){
                 i+=4;
@@ -40,7 +43,7 @@ function solution(s) {
                     str+='7'
                 }                
             }
-            else if(s[i]=='t'){
+            else if(s[i]=='e'){
                 i+=5;
                 str+='8'
             }
@@ -48,10 +51,14 @@ function solution(s) {
                 i+=4;
                 str+='9'
             }
-            else console.log('error')
+            else {
+                console.log('error ' + i)
+                return
+            }
         }
     }
-    console.log(str)
+    answer = str
+    console.log(answer)
     return answer;
 }
 
