@@ -1,0 +1,12 @@
+function solution(numbers) {
+    var answer = [];
+    for(var i=0; i<numbers.length; i++) {
+        for(var k=i+1; k<numbers.length; k++) {
+            answer.push(numbers[k]+numbers[i])
+        }        
+    }
+    var set = new Set(answer)
+    answer=[...set]
+    answer.sort((a,b)=>a-b)
+    return answer;
+}
