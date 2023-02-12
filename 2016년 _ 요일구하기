@@ -1,0 +1,13 @@
+function solution(a, b) {
+    var answer = '';
+    const dates = [31,29,31,30,31,30,31,31,30,31,30,31]
+    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+    var passed = 5
+    
+    for(var i=0; i<a-1; i++){
+        passed += dates[i]
+    }
+    passed += (b-1)
+    answer = days[passed%7]
+    return answer;
+}
