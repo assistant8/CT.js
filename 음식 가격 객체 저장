@@ -1,0 +1,11 @@
+function solution() {
+  var korean = 7000;
+  var chinese = 6000;
+  var western = 8500;
+  var discount_korean = korean*0.9;
+  var total_price = 55*discount_korean + 43*chinese + 52*western;
+
+  return { korean, chinese, western, discount_korean, total_price };
+}
+
+module.exports = solution;
