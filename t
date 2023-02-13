@@ -1,2 +1,2 @@
-var s="seven6five"
-console.log(s.split("five"))
+var s=10
+console.log(++s)
