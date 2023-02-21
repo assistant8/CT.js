@@ -1,0 +1,30 @@
+function solution(s) {
+    var answer = '';
+    var max = s[0]
+    var mark
+    for(var i=0; i<s.length; i++) {
+        max='A'
+        for(var k=i; k<s.length; k++) { //최대값 찾기
+            if(max<s[k]) {
+                max=s[k]   
+                mark = k //최대값 인덱스
+            }
+        }
+        console.log(max, mark)
+        var temp = s[i]
+        s[i] = max
+        s[mark] = temp
+        console.log("       ", s[i], s[mark])
+    }
+    answer = s
+    return answer;
+}
+
+// function swap (s1,s2) {
+//     var temp;
+//     temp = s1
+//     s1 = s2
+//     s2 = temp
+// }
+
+console.log(solution('Zbcdefg'))
