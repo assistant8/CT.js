@@ -1,0 +1,15 @@
+function solution(n) {
+    var answer = [];
+    n = String(n)
+    var arr = n.split('')
+    arr.forEach((element, index) => { //아래 주석과 동일
+        arr[index] = Number(element)
+    });
+    // for(var i=0; i<arr.length; i++) { 
+    //     arr[i] = Number(arr[i])
+    // }
+    answer = arr.reverse()
+    return answer;
+}
+
+console.log(solution(12345))
