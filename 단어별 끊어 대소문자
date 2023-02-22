@@ -1,0 +1,22 @@
+function solution(s) {
+    var answer = '';
+    var arr = s.split(' ')
+    for(var i=0; i<arr.length; i++) {
+        var arr2 = arr[i].split('') 
+        for(var k=0; k<arr[i].length; k++) {
+            if(k%2==1) arr2[k]=arr2[k].toLowerCase()
+            else arr2[k]=arr2[k].toUpperCase()
+        }
+
+        if(i==arr.length-1) answer+=arr2.join('')
+        else answer+=arr2.join('').concat(" ")
+    }
+
+
+    // for(var i=0; i<arr.length; i++) {
+    //     if(i%2==1) arr[i] = arr[i].toLowerCase()
+    //     else arr[i] = arr[i].toUpperCase()
+    // }
+    // answer = arr.join('')
+    return answer;
+}
