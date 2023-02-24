@@ -1,0 +1,14 @@
+function solution(nums) {
+    var answer = 0;
+    var arr = []
+    for(var i=0; i<nums.length; i++) {
+        for(var k=0; k<arr.length; k++) {
+            if(nums[i]==arr[k]) {
+                break;
+            }
+            if(k==arr.length-1) arr.push(nums[i])
+        }
+    }
+    answer = arr.length
+    return answer;
+}
