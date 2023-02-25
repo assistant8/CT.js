@@ -2,7 +2,6 @@ function solution(s) {
     var answer = 0;
     var arr = s.split('')
 
-
     for(var i=0; i<arr.length; i++) {
         var a = []
         for(var k=i; k<i+arr.length; k++) {
@@ -11,21 +10,73 @@ function solution(s) {
             else
                 a.push(arr[k])
         }
-        console.log(a)
 
-        for(var k=0; k<i+arr.length; k++) { //이제 a 검사
-            if(a[k]==`(`||`[`||`{`) {
+        // console.log(i, a)
+        var flag = true
+        var open = false
+        for(var k=0; k<a.length; k++) { //이제 a 검사
+            if(flag==false) break;
+            
+            if(a[k]==`(`) {
+                open = true
                 for(var j=k; j<a.length; j++) {
-                    if(a[j]==`)`||`]`||`}`)
-                        answer++
+                    if(a[j]==`)`) {
+                        break;
+                    }         
+                    if(j==a.length-1) flag=false                       
                 }
             }
-
+            else if(a[k]==`{`) {
+                open = true
+                for(var j=k; j<a.length; j++) {
+                    if(a[j]==`}`) {
+                        break;
+                    }         
+                    if(j==a.length-1) flag=false 
+                }
+            }
+            else if(a[k]==`[`) {
+                open = true
+                for(var j=k; j<a.length; j++) {
+                    if(a[j]==`]`) {
+                        break;
+                    }         
+                    if(j==a.length-1) flag=false                       
+                }
+            }            
+        }
+        
+        if(flag==true && open==true) {
+            answer++
         }
     }
 
-//     arr.forEach((e)=>{
-
-//     })
     return answer;
-}
+} //몇개 틀림
+
+// const pair = { '}': '{', ']': '[', ')': '(' }
+
+// function solution(s) {
+//   const arr = s.split('')
+//   let result = 0
+//   const isValid = arr => {
+//     const stack = []
+//     for (let i = 0; i < arr.length; i++) {
+//       const c = arr[i]
+//       if (pair[c] === undefined) stack.push(c)
+//       else {
+//         if (stack[stack.length - 1] !== pair[c]) return false
+//         stack.pop()
+//       }
+//     }
+//     if (stack.length) return false
+//     return true
+//   }
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (isValid(arr)) result++
+//     arr.push(arr.shift())
+//   }
+
+//   return result
+// }
