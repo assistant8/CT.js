@@ -1,0 +1,14 @@
+function solution(numbers) {
+    var answer = [];
+    
+    for(var i=0; i<numbers.length; i++) {
+        for(var k=i; k<numbers.length; k++) {
+            if(numbers[i]<numbers[k]) {
+                answer.push(numbers[k]);
+                break;
+            }
+            if(k==numbers.length-1) answer.push(-1)
+        }
+    }
+    return answer;
+}

@@ -1,0 +1,31 @@
+function solution(s) {
+    var answer = 0;
+    var arr = s.split('')
+
+
+    for(var i=0; i<arr.length; i++) {
+        var a = []
+        for(var k=i; k<i+arr.length; k++) {
+            if(k>=arr.length) 
+                a.push(arr[k-arr.length])
+            else
+                a.push(arr[k])
+        }
+        console.log(a)
+
+        for(var k=0; k<i+arr.length; k++) { //이제 a 검사
+            if(a[k]==`(`||`[`||`{`) {
+                for(var j=k; j<a.length; j++) {
+                    if(a[j]==`)`||`]`||`}`)
+                        answer++
+                }
+            }
+
+        }
+    }
+
+//     arr.forEach((e)=>{
+
+//     })
+    return answer;
+}
