@@ -1,0 +1,15 @@
+function solution(participant, completion) {
+    var answer = '';
+    var p = [...participant]
+    
+    for(var k=0; k<participant.length; k++) {
+        for(var i=0; i<completion.length; i++) {
+            if(participant[k]==completion[i]) {
+                participant.splice(k,1)
+                console.log(k)
+            }                
+        }
+    }
+    console.log(participant)
+    return answer;
+}
