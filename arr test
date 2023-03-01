@@ -1,0 +1,6 @@
+let arr = 'abc a ab'
+let arr2 = arr.slice()
+let arr3 = arr.replaceAll('ab', 'z')
+
+console.log(arr)
+console.log(arr3)
