@@ -1,0 +1,31 @@
+function solution(clothes) {
+    var answer = 1;
+    const map = new Map()
+    var arr = []
+    for(var i=0; i<clothes.length; i++) {
+        arr.push(clothes[i][1])
+    }
+    const set = new Set(arr)
+    
+    var arr2 = Array.from(set)
+    var obj = {};
+    
+    for(var i=0; i<arr2.length; i++) {
+        obj[arr2[i]]=0
+    }
+    
+    for(var i=0; i<clothes.length; i++) {
+        obj[clothes[i][1]]++;
+    }
+    
+    for(let key in obj) {
+        answer *= obj[key]
+    }
+    
+    // arr2.forEach((e)=>{
+    //     obj.e = 0
+    // })
+    
+    console.log(obj)
+    return answer-1;
+}
