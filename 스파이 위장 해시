@@ -9,11 +9,15 @@ function solution(clothes) {
     
     var arr2 = Array.from(set)
     var obj = {};
-    
-    for(var i=0; i<arr2.length; i++) {
-        obj[arr2[i]]=0
-    }
-    
+
+    arr2.forEach((e)=>{
+        obj[e] = 0
+    })
+
+    // for(var i=0; i<arr2.length; i++) {
+    //     obj[arr2[i]]=0
+    // }
+
     for(var i=0; i<clothes.length; i++) {
         obj[clothes[i][1]]++;
     }
@@ -21,10 +25,6 @@ function solution(clothes) {
     for(let key in obj) {
         answer *= (obj[key]+1)
     }
-    
-    // arr2.forEach((e)=>{
-    //     obj.e = 0
-    // })
     
     console.log(obj)
     return answer-1;
