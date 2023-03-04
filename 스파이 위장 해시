@@ -19,7 +19,7 @@ function solution(clothes) {
     }
     
     for(let key in obj) {
-        answer *= obj[key]
+        answer *= (obj[key]+1)
     }
     
     // arr2.forEach((e)=>{
@@ -29,3 +29,7 @@ function solution(clothes) {
     console.log(obj)
     return answer-1;
 }
+
+solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])
+
+//	5
