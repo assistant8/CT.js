@@ -1,0 +1,31 @@
+function solution(progresses, speeds) {
+    var answer = [];
+    var arr = [];
+    for(var i=0; i<progresses.length; i++) {
+        progresses[i] = 100-progresses[i]
+        arr[i] = Math.ceil(progresses[i] / speeds[i])
+    }
+    var s = []
+    
+    for(var i=0; i<arr.length; i++) {
+        var count = 0
+        for(var k=i+1; k<arr.length; k++) {
+            if(arr[i]>arr[k]) { //현 값이 이후 값보다 클때 - k 진행
+                count++
+            }
+            else if(count>0) { //이미 이전 진행도중 끝난 task들 pass (잡아먹힘)
+                i=i+count;
+                break;
+            }
+            else break; //다시 시작이지만 이후 값보다 작을때
+        }
+        if(i==arr.length-1){
+            if(arr[i]<arr[i-1]){
+                break;
+            }
+        }
+        s.push(count+1) 
+    }
+    answer = s
+    return answer;
+}
