@@ -1,0 +1,45 @@
+function getOnlyEvenNumber(inputA) {
+    
+    var output = inputA.filter((e)=>{
+        return e%2==0
+    })
+    return output
+}
+var inputA = [1, 2, 3, 4, 5, 6, 7]
+console.log(getOnlyEvenNumber(inputA))
+
+
+
+
+
+
+var output = []
+
+output = inputA.map((e, i)=> { 
+    return e+3
+})
+
+console.log(output)
+
+//////////////////////////////////////둘 동일 (map과 forEach)
+
+var output = []
+
+inputA.forEach((e,i)=> { 
+    output[i] = e+3
+})
+
+console.log(output)
+
+
+
+
+
+/////////////이건 filter 예제
+var output = []
+
+output = inputA.filter((e,i)=> { 
+    return e%2==0
+})
+
+console.log(output)
