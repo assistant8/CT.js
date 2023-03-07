@@ -4,3 +4,9 @@ let arr3 = arr.replaceAll('ab', 'z')
 
 console.log(arr)
 console.log(arr3)
+
+const a = [1,3,5,2,4]
+console.log(a)
+a.push(a[2])
+a.splice(2,1)
+console.log(a)
