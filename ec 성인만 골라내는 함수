@@ -1,0 +1,32 @@
+// 지시사항에 따라 코드를 작성합니다.
+
+function getOnlyAdults(inputA) {
+    const arr = inputA.filter((e,i)=>{
+        return e.age>=20
+    })
+    console.log(arr)
+    const arr2 = []
+    arr.forEach(e=>{
+        arr2.push(e.name)
+    })
+    return arr2
+}
+
+var inputA = [{
+  name: "박태환",
+  age: 35
+}, 
+{
+  name: "유재석",
+  age: 49
+},
+{
+  name: "김강훈",
+  age: 12
+},
+{
+  name: "이지원",
+  age: 15
+}]
+
+module.exports = { inputs: [inputA], func: getOnlyAdults }
