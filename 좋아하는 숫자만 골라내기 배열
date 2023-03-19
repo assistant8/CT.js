@@ -1,0 +1,18 @@
+ // 지시사항을 참고하여 solution 함수 안에 코드를 작성하세요. 
+function solution(input) {
+  const num_tuple = ['2','3','5','6','7','8','9'];
+  var result = []
+    for(let i=0; i<input.length; i++){
+        num_tuple.forEach((e)=>{
+            if(e==input[i]){
+                result.push(input[i])
+            }
+        })
+        if(result.length==5) break
+    }
+  return result;
+}
+
+
+// 실행 혹은 제출을 위한 코드입니다. 지우거나 수정하지 말아주세요.
+module.exports = solution;
