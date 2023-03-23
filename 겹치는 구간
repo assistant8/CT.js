@@ -1,0 +1,19 @@
+ // 지시사항을 참고하여 solution 함수 안에 코드를 작성하세요. 
+function solution(input) {
+    const sol = []
+    const i = input.split('\n')
+    const arr2=i.map(e=>Number(e))
+    
+    console.log(arr2)
+    if(arr2[0]>arr2[2]) sol.push(arr2[0])
+    else sol.push(arr2[2])
+    if(arr2[1]<arr2[3]) sol.push(arr2[1])
+    else sol.push(arr2[3])
+    if(sol[0]>sol[1]) return "X"
+
+  return sol;
+}
+
+
+// 실행 혹은 제출을 위한 코드입니다. 지우거나 수정하지 말아주세요.
+module.exports = solution;
