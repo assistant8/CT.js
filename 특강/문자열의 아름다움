@@ -1,0 +1,28 @@
+function a (string) {
+    let result = 0;
+    for(var i=0; i<string.length; i++) {
+        for(var k=i; k<string.length; k++) {
+            console.log(string.substring(i,k+1))
+            const subresult = b(string.substring(i,k+1))
+            result += subresult
+            console.log(subresult)
+        }
+    }
+    return result
+}
+
+function b(sub) { //각 sub의 아름다움 리턴
+    let max = 0;
+    if(sub.length===1) //문자 모두 동일 시 max = 0
+    for(var i=0; i<sub.length; i++) {
+        for(var k=i; k<sub.length; k++) {
+            if(sub[i]!=sub[k]) {
+                if(max<k-i)
+                max = k-i
+            }
+        }
+    }
+    return max
+}
+
+console.log(a("oo"))
