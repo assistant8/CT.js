@@ -1,4 +1,4 @@
-function a (string) {
+function a(string) {
     let result = 0;
     for(var i=0; i<string.length; i++) {
         for(var k=i; k<string.length; k++) {
@@ -25,4 +25,4 @@ function b(sub) { //각 sub의 아름다움 리턴
     return max
 }
 
-console.log(a("oo"))
+console.log(a("baby"))
