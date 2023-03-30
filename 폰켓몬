@@ -1,0 +1,18 @@
+function solution(nums) {
+  // set을 몰랐을 때 set 구현
+  //     var arr = [nums[0]]
+  //     for(var i=0; i<nums.length; i++) {
+  //         for(var k=0; k<arr.length; k++) {
+  //             if(nums[i]==arr[k]) {
+  //                 break;
+  //             }
+  //             if(k==arr.length-1) arr.push(nums[i])
+  //         }
+  //     }
+
+  var answer = 0;
+  var set = new Set(nums);
+
+  answer = set.size <= nums.length / 2 ? set.size : nums.length / 2;
+  return answer;
+}
