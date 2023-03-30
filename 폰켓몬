@@ -14,5 +14,6 @@ function solution(nums) {
   var set = new Set(nums);
 
   answer = set.size <= nums.length / 2 ? set.size : nums.length / 2;
+  // 인풋배열/2 과 Set 길이 중 작은것 택함
   return answer;
 }

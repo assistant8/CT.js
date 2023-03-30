@@ -18,17 +18,16 @@ function solution(participant, completion) {
 
 function solution(participant, completion) {
     var answer = '';
-
+    
     participant.sort()
     completion.sort()
+    console.log(participant, completion)
     for(var k=0; k<participant.length; k++) {
-        if(participant[k]!=completion[k]) {
-            answer=participant[k]
-            break
-        }         
+        if(participant[k]!==completion[k]){
+            answer = participant[k];
+            break;
+        }
     }
-    
-    return answer;
 }
 //하나만 다르므로 두 배열 정렬시켜서 다르게되면 그 원소 결과값으로
 
