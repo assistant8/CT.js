@@ -34,23 +34,23 @@ function solution(participant, completion) {
 function solution(participant, completion) {
     const myMap = new Map();
     
-        for ( const participant of participants){
-            if(!myMap.get(participant)){
-                myMap.set(participant, 1);
+        for ( const p of participant){ //p 모두 map의 key로 넣고 value=1
+            if(!myMap.get(p)){
+                myMap.set(p, 1);
             }else{
-                myMap.set(participant, myMap.get(participant)+1);
+                myMap.set(p, myMap.get(p)+1); //중복 시 그 p value++
             }
         }
     
-        for(const completion of completions){
-            if(myMap.get(completion)){
-                myMap.set(completion, myMap.get(completion)-1);
+        for(const c of completion){ //map에 c 있으면 value--, c에 없는 미완주자는 1이상이겠지
+            if(myMap.get(c)){
+                myMap.set(c, myMap.get(c)-1);
             }
         }
         
-        for(const participant of participants){
-            if(myMap.get(participant) && myMap.get(participant) >=1 ){
-                answer = participant;
+        for(const p of participant){ //map 요소 중 value가 1 이상일 경우 그 key가 정답
+            if(myMap.get(p) && myMap.get(p) >=1 ){
+                answer = p;
             }
         }
 }

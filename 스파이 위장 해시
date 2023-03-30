@@ -1,3 +1,4 @@
+// 처음 푼, 돌고돌아 푼
 function solution(clothes) {
     var answer = 1;
     const map = new Map()
@@ -31,9 +32,29 @@ function solution(clothes) {
 }
 
 solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])
-
 //	5
 
+// 2번째 푼, 필요한 것만 추출해서 obj로 만들고 푼
+function solution(clothes) {
+    var answer = 1;
+    const obj = {};
+    
+    for(var i=0; i<clothes.length; i++) {
+        obj[clothes[i][1]] = 0;
+    }
+    
+    for(var i=0; i<clothes.length; i++) {
+        obj[clothes[i][1]]++;
+    }
+
+    for(let key in obj) {
+        answer *= (obj[key]+1)
+    }
+    
+    return answer-1;
+}
+
+// 다른사람 정석 풀이
 // function solution(clothes) {
 //     let answer = 1;
 //     const obj = {};
