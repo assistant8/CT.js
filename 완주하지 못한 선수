@@ -1,3 +1,6 @@
+// 첫번째 풀이 - 실패
+//splice 때문에 if에 들어간 원소가 지워져서 배열이 짧아짐, 그다음 원소(k)는 넘어가버림
+//slice는 원본 배열을 지우지는 못함, 결국 splice slice로 할 수 없음
 function solution(participant, completion) {
     var answer = '';
     var p = [...participant]
@@ -13,9 +16,9 @@ function solution(participant, completion) {
     console.log(participant)
     return answer;
 }
-//splice 때문에 if에 들어간 원소가 지워져서 배열이 짧아짐, 그다음 원소(k)는 넘어가버림
-//slice는 원본 배열을 지우지는 못함, 결국 splice slice로 할 수 없음
 
+//두번째 풀이
+//하나만 다르므로 두 배열 정렬시켜서 다르게되면 그 원소 결과값으로
 function solution(participant, completion) {
     var answer = '';
     
@@ -29,8 +32,9 @@ function solution(participant, completion) {
         }
     }
 }
-//하나만 다르므로 두 배열 정렬시켜서 다르게되면 그 원소 결과값으로
 
+
+//다른 사람 해시 이용 풀이
 function solution(participant, completion) {
     const myMap = new Map();
     
@@ -54,4 +58,3 @@ function solution(participant, completion) {
             }
         }
 }
-//해시 이용 풀이

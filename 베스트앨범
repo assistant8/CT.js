@@ -1,3 +1,4 @@
+//테케 2개 틀림 - 같은거 index 순으로 하는거 고려 못함
 function solution(genres, plays) {
     var answer = [];
     var obj = {};
