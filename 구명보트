@@ -1,0 +1,65 @@
+// function solution(people, limit) {
+//     var answer = 0;
+//     people.sort((a,b)=>a-b);
+//     console.log(people)
+//     for(let i=0; i<people.length; i++) {
+//         if(people.length === 1){ //원소 하나면 1 추가 후 종료
+//             answer++;
+//             return answer;
+//         }
+
+//         for(let k=i+1; k<people.length; k++) { //2명 이상 있을 때
+//             if(people[i]+people[k] > limit) { //초과되었다면 그 전 사람과의 총 무게가 최대임
+//                 //2명인 경우(i와k 다르면) k 나감
+//                 // console.log(i,k,people)
+//                 people.splice(k-1,1) 
+//                 break;
+//             }
+//             else if(k===people.length-1 && people[i]+people[k] <= limit) { //k가 마지막 원소고 둘의 합이 limit 이하일 때
+//                 people.splice(k,1) 
+                
+//                 break;
+//             }
+//         }
+
+//         people.shift() //i 본인은 무조건 나감
+//         i--;
+//         answer++; //몇명 나갔든지 보트는 한번 사용
+//         console.log(people) //
+//     }
+    
+//     return answer;
+// }
+
+function solution(people, limit) {
+    var answer = 0;
+    people.sort((a,b)=>a-b);
+    console.log(people)
+    for(let i=0; i<people.length; i++) {
+        if(people.length === 1){ //원소 하나면 1 추가 후 종료
+            answer++;
+            return answer;
+        }
+
+        for(let k=i+1; k<people.length; k++) { //2명 이상 있을 때
+            if(people[i]+people[i+1] > limit) { //다음꺼와 합이 초과면 i만 삭제
+                people.shift()
+                i--;
+                break;
+            }
+
+            else if(people[i]+people[k] > limit) { //k 돌다가 합이 limit 넘으면
+                people.splice(k-1,1) //이전꺼가 최대였으니 k-1 삭제
+                people.shift() //i와 함께
+                i--;
+                break;
+            }
+        }
+        answer++;
+        console.log(people)
+    }
+    
+    return answer;
+}
+
+console.log(solution([20,30,60,80,90], 100))
