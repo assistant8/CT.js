@@ -1,0 +1,33 @@
+function solution(n, costs) {
+    var answer = 0;
+    const map = new Map();
+    let connect = [];
+    let set = new Set();
+    let rest = [];
+    
+    costs.forEach(e=>{ //map 형성
+        const [a,b,c] = e;
+        if(!map.get(a)) map.set(a, []) //처음 들어온 키 값이면 배열로 초기화
+        map.get(a).push(b) //그 key에 두번째 원소 push
+    })
+    console.log(map)
+    
+    for (const [key, value] of map) { //rest 초기화 (모든 원소)
+        rest.push(key);
+    }
+    
+    connect.push(0)
+    for(let i=0; i<n; i++) { //connect 하나 추가 사이클
+        let min = 9999;
+        for(k=0; k<connect.length; k++) { //connect 원소 하나하나마다
+            if(min<map.get(connect[k])) {
+                min = costs[connect[k]]
+            }
+        }
+        
+        if(connect.length === n) break;
+    }
+    
+    
+    return answer;
+}
