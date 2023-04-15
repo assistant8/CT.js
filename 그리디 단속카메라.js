@@ -53,3 +53,6 @@ function solution(routes) {
     }
     return answer;
 }
+
+console.log(solution([[-20,-15]]))
+//입력 테케 모두 맞는데 제출 테케 틀림.. 뭐가 틀린지 모르겠음

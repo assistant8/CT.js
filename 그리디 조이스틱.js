@@ -1,3 +1,4 @@
+// 왔다갔다 해야하는 부분 고려 못함
 function solution(name) {
     var count1 = 0;
     var count2 = 0;
@@ -46,7 +47,36 @@ function solution(name) {
     console.log("최종2", count2)
     return count1 > count2 ? count2 : count1;
 }
+solution("ABAAAAAAAAABB") //7
 
 
-
-solution("AAAAADBAAELSPUAAAOA")
+//윤코드
+function solution(name) {
+    var answer = 0;
+  
+    let min = name.length - 1;
+  
+    for (let i = 0; i < name.length; i++) {
+      let tmp = name.charCodeAt(i);
+  
+      if (tmp < 78) {
+        answer += tmp % 65;
+      } else {
+        answer = answer + 91 - tmp;
+      }
+  
+      let nextIndex = i + 1;
+  
+      while (nextIndex < name.length && name.charCodeAt(nextIndex) === 65)
+        nextIndex += 1;
+  
+      if (i == 0) min = Math.min(name.length - nextIndex, min);
+      else min = Math.min(2 * i + name.length - nextIndex, min);
+  
+      // 처음부터 뒤로 가는 경우
+      if (i == 0) min = Math.min(min, name.length - nextIndex);
+      else min = Math.min(min, i + (name.length - nextIndex) * 2);
+    }
+    answer = answer + min;
+    return answer;
+  }
