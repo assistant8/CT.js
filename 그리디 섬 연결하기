@@ -32,7 +32,9 @@ function solution(n, costs) {
     return answer;
 }
 
-//블로그 
+
+
+/////////////블로그 
 // https://eunchanee.tistory.com/608
 const unionFind = (n, parent) => {
     if(parent[n] === n){
@@ -66,3 +68,55 @@ const solution = (n, costs) => {
     
     return answer;
 }
+
+//////////////////같이 이해한 코드
+
+function solution(n, costs) {
+    // 각 섬을 별도의 집합으로 초기화
+    const parent = new Array(n).fill().map((_, i) => i);
+    const rank = new Array(n).fill(0);
+  
+    // 비용이 낮은 순으로 간선 정렬
+    const sortedCosts = costs.sort((a, b) => a[2] - b[2]);
+  
+    let totalCost = 0;
+    for (const [from, to, cost] of sortedCosts) {
+      // 두 섬이 이미 같은 집합에 속해 있으면 스킵
+      if (findParent(from) === findParent(to)) continue;
+  
+      // 두 집합을 합치고 비용 누적
+      union(from, to);
+      totalCost += cost;
+  
+      // 모든 섬이 연결되었으면 종료
+      if (isAllConnected()) break;
+    }
+  
+    return totalCost;
+  
+    function findParent(x) {
+      if (parent[x] !== x) parent[x] = findParent(parent[x]);
+      return parent[x];
+    }
+  
+    function union(x, y) {
+      const px = findParent(x);
+      const py = findParent(y);
+  
+      if (px === py) return;
+  
+      if (rank[px] > rank[py]) parent[py] = px;
+      else {
+        parent[px] = py;
+        if (rank[px] === rank[py]) rank[py]++;
+      }
+    }
+  
+    function isAllConnected() {
+      const root = findParent(0);
+      for (let i = 1; i < n; i++) {
+        if (findParent(i) !== root) return false;
+      }
+      return true;
+    }
+  }
