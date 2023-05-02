@@ -1,0 +1,12 @@
+function printer(n, arr) {
+    arr.sort((a,b)=>b-a);
+    let sum = 0;
+    let prev = 0;
+    for(let i=0; i<n; i++){
+        prev+=arr[i];
+        sum+=prev;
+    }
+    return sum
+}
+
+console.log(printer(5, [3,1,4,3,2]));

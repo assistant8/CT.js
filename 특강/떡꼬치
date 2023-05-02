@@ -1,0 +1,13 @@
+function remain(total) {
+    if(total===1 || total===3) {
+        console.log(-1);
+        return;
+    }
+    const d5 = Math.floor(total/5);
+    const remainofd5 = Math.floor(total%5);
+    const d2 = Math.floor(remainofd5/2);
+    console.log("d5=", d5, "d2= ", d2);
+    console.log(d5+d2)
+}
+
+remain(17);
