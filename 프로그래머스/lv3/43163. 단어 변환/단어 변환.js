@@ -1,32 +1,30 @@
 function solution(begin, target, words) {
-  // 탐색을 시작하는 노드를 큐에 넣고, 방문 처리를 합니다.
+  //탐색하려는 단어 Q에 넣고 방문 기록
   const queue = [[begin, 0]];
   const visited = new Set([begin]);
 
-  while (queue.length) {
-    // 큐에서 탐색할 노드와 거리를 꺼냅니다.
-    const [current, distance] = queue.shift();
+  while (queue.length) { //Q가 존재하는 동안
+    const [current, count] = queue.shift(); //Q에서 단어와 count 꺼냄
 
-    // target에 도달했으면 거리를 반환합니다.
-    if (current === target) {
-      return distance;
+    if (current === target) { //현재 단어와 타겟 동일 시 count 리턴
+      return count;
     }
 
-    // 모든 단어를 하나씩 확인합니다.
+    //모든 words 확인 
     for (const word of words) {
-      // 한 글자씩 다른 단어인 경우, 방문하지 않은 단어이면 큐에 넣고 방문 처리합니다.
+      // (한 글자씩 다른 단어 + 방문하지 않은 단어)이면 큐에 넣고 방문 가록
       if (diffOneChar(current, word) && !visited.has(word)) {
-        queue.push([word, distance + 1]);
+        queue.push([word, count + 1]);
         visited.add(word);
       }
     }
   }
 
-  // target으로 변환할 수 없는 경우 0을 반환합니다.
+  // target으로 변환할 수 없는 경우 0 리턴
   return 0;
 }
 
-// 한 글자씩 다른 단어인지 확인하는 함수입니다.
+// 한 글자씩 다른 단어인지 확인하는 함수
 function diffOneChar(word1, word2) {
   let diffCount = 0;
   for (let i = 0; i < word1.length; i++) {
@@ -37,5 +35,5 @@ function diffOneChar(word1, word2) {
       return false;
     }
   }
-  return diffCount === 1;
+  return diffCount === ture;
 }
