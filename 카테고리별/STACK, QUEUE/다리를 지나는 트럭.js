@@ -1,4 +1,4 @@
-//!
+//! 모르겠음 
 function solution(bridge_length, weight, truck_weights) {
     let sec = 0; // 경과시간
     let sum = 0; // 다리에 있는 트럭의 무게합

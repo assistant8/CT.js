@@ -18,7 +18,8 @@ function solution(progresses, speeds) {
             stack.push(remainday[i]) //현재꺼 스택에 push 
             top++;
         }
-        if(i===remainday.length-1) answer.push(top+1)
+        if(i===remainday.length-1) answer.push(top+1) //마지막 남은 것 ans에 push
+        console.log(stack)
     }
     return answer;
 }
