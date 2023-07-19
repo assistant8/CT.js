@@ -6,14 +6,16 @@ function solution(numbers) {
     return answer[0] === '0' ? '0' : answer;
 }
 
+solution([3, 30, 34, 5, 9])
+
 // function solution(numbers) {
 //     var arr = numbers.map(e=>String(e));
-//     arr.sort((a,b)=>(a+b)-(b+a))
-//     console.log(arr)
+//     arr.sort((a,b)=> (b+a) - (a+b))
+//     var answer = arr.join('')
+//     console.log(answer)
 
 // }
 
-// solution([3, 30, 34, 5, 9])
 
 // //+면 바꾸고 -면 그대로
 
