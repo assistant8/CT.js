@@ -1,5 +1,4 @@
 function solution(citations) {
-    var answer = 0;
     var l = citations.length;
     for(let i=0; i<=l; i++) { //h값 = i => 1부터 길이까지 시도해보는 거임, 최댓값 나올 때까지
         count = 0;
