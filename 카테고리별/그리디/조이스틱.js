@@ -1,7 +1,7 @@
 // 왔다갔다 해야하는 부분 고려 못함
 function solution(name) {
-    var count1 = 0;
-    var count2 = 0;
+    var count1 = 0; //정방향
+    var count2 = 0; //역방향 
 
     var arr = [];
     for(let i=65; i<=90; i++){
@@ -12,7 +12,7 @@ function solution(name) {
         if(i>13) i=26-i;
         map.set(e, i);
     })
-    console.log(map); 
+    console.log(map); //각 알파벳마다 A에서 얼만큼 움직이면 되는지 Map 형식 저장
 
     count1 += map.get(name[0]) //첫번째는 일단 더하고
     count2 += map.get(name[0]) //첫번째는 일단 더하고
@@ -47,28 +47,28 @@ function solution(name) {
     console.log("최종2", count2) //정방향 역방향 둘 중 나은거 고르기 
     return count1 > count2 ? count2 : count1;
 }
-solution("ABAAAAAAAAABB") //7
+// console.log(solution("ABAAAAAAAAABB")) //7
 
 
 //윤코드 - 구글링 딴거 맞는게 없음 
-function solution(name) {
+function solution2(name) {
     var answer = 0;
   
     let min = name.length - 1;
-  
+    console.log(name)
     for (let i = 0; i < name.length; i++) {
       let tmp = name.charCodeAt(i);
-  
+        console.log("tmp", tmp)
       if (tmp < 78) {
         answer += tmp % 65;
       } else {
         answer = answer + 91 - tmp;
-      }
+      } //여기까지 각 char의 숫자 구함 
   
       let nextIndex = i + 1;
   
       while (nextIndex < name.length && name.charCodeAt(nextIndex) === 65)
-        nextIndex += 1;
+        nextIndex += 1; //계속 a 나오면 쭉 next 넘어가라 
   
       if (i == 0) min = Math.min(name.length - nextIndex, min);
       else min = Math.min(2 * i + name.length - nextIndex, min);
@@ -80,3 +80,5 @@ function solution(name) {
     answer = answer + min;
     return answer;
   }
+
+  console.log(solution2("JEROEN"))
