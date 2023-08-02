@@ -3,15 +3,16 @@ function solution(n, times) {
     times.sort((a,b)=>a-b);
     var left = 0;
     var right = n*times[times.length-1];
-    
+    console.log("left, right", left, right)
+
     while(left<=right) { //두 잣대가 
         var mid = Math.floor((left+right)/2);
         var count = 0;
         
         for(i=0; i<times.length; i++) { //심사대 개수만큼
-            count += Math.floor(mid/times[i])
+            count += Math.floor(mid/times[i]) //count는 n(통과되는 사람 수)와 맞아야함
         }
-        console.log(count, left)
+        console.log("count, mid", count, mid)
         
         if(count>=n) { //n이어도 최소를 찾아야하므로 왼쪽에서 찾기
             right=mid-1; 
@@ -22,6 +23,10 @@ function solution(n, times) {
     
     return left;
 }
+
+console.log(solution(6,[7,10]))
+// left right mid는 걸리는 시간, count는 통과되는 사람 수 
+// mid를 움직이면서 그에 해당하는 count가 6이 되는 시간 중 최소를 찾는 것 
 
 // 이진 탐색은 탐색 범위를 절반씩 줄여가며 탐색하는 특성을 가지고 있습니다. 이를 이용하여 시간 복잡도를 효율적으로 개선할 수 있습니다. 만약 일반적인 선형 탐색을 사용한다면, 시간이 많이 소요될 수 있습니다.
 // 문제에서 요구하는 것은 "모든 사람이 심사를 받는 데 걸리는 최소 시간" 입니다. 이를 구하기 위해서는 최소 시간을 찾아야 합니다. 이진 탐색은 정렬된 배열에서 특정 값을 찾는데 주로 사용되지만, 이 문제에서는 최소 시간을 찾는 데에도 활용할 수 있습니다. 이진 탐색은 탐색 범위를 반씩 줄여가면서 최소 시간을 찾을 수 있습니다.
