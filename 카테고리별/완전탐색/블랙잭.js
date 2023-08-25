@@ -19,6 +19,7 @@ const getCombinations = (array, selectNumber) => {
 }
 
 const result = getCombinations(A, 3)
+
 result.forEach((e,idx)=>{
     let sum = 0;
     for(let i=0; i<3; i++) {

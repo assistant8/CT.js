@@ -15,7 +15,8 @@ function digitSum(num) {
     let sum = num.split("").map(Number).reduce((accumulator, value)=>{
         return accumulator+value;
     }, 0)
-    // console.log(sum)
     return sum;
 }
 
+//그냥 N 전까지 모든 수의 자릿수합 + 그 수 해서 N과 동일하면 그거 리턴 
+//for문 돌림 
