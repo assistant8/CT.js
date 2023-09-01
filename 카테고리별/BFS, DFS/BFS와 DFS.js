@@ -7,13 +7,13 @@ let [N, M, V] = NMV.split(" ").map(Number);
 A = A.map(e=>e.split(" ").map(Number));
 
 let graph = {};
-// console.log(A)
 const objEdges = makeObjEdge(A);
-console.log(objEdges)
-const orderBFS = bfs(objEdges, V);
+// console.log(objEdges)
+
 const orderDFS = dfs(objEdges, V);
-console.log(orderDFS)
-console.log(orderBFS)
+console.log(orderDFS.join(" "))
+const orderBFS = bfs(objEdges, V);
+console.log(orderBFS.join(" "))
 
 function makeObjEdge(A) {
     for(let i=1; i<=N; i++) {
@@ -24,41 +24,41 @@ function makeObjEdge(A) {
         graph[node[0]].push(node[1]);
         graph[node[1]].push(node[0]);
     }
-    
+
     return graph;
 }
 
 function dfs(graph, startNode) {
     let visited = new Array(N).fill(0);
     let needVisit = [startNode];
-    let count = 1;
+    let order = [];
     
     while(needVisit.length!==0) {
-        console.log("!!", needVisit)
+        // console.log("!!", needVisit)
 
         let node = needVisit.pop();
         if(visited[node-1]===0) {
-            visited[node-1]=count;
-            count++;
-            needVisit.push(...graph[node].reverse());
+            visited[node-1]=1;
+            order.push(node)
+            needVisit.push(...(graph[node].sort((a,b)=>b-a)));
         }
     }
-    return visited
+    return order
 }
 
 function bfs(graph, startNode) {
     let visited = new Array(N).fill(0);
     let needVisit = [startNode];
-    let count = 1;
-    
+    let order = [];
+
     while(needVisit.length!==0) {
         // console.log("!!", needVisit)
 
         let node = needVisit.shift();
         if(visited[node-1]===0) {
-            visited[node-1]=count;
-            count++;
-            needVisit.push(...graph[node])
+            visited[node-1]=1;
+            order.push(node)
+            needVisit.push(...(graph[node].sort((a,b)=>a-b)));
             // for(let neighbor of graph[node]) {
             //     if(visited[neighbor-1]===0) {
             //         needVisit = [...needVisit, neighbor]
@@ -66,7 +66,7 @@ function bfs(graph, startNode) {
             // }
         }
     }
-    return visited
+    return order
 }
 
 

@@ -1,8 +1,10 @@
 function solution(n, edge) {
     var answer = 0;
     const edges = makeObjEdge(edge);
+    console.log("edges", edges)
     return bfs(edges, 1)
 }
+solution(6, [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]])
 
 function bfs(edges, startingNode) {
     const visited = {}; //방문한
@@ -24,7 +26,7 @@ function bfs(edges, startingNode) {
             }
         }
     }
-    // console.log(visited)
+    console.log("visited", visited)
     return getMaxValueKeysCount(visited)
 }
 

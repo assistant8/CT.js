@@ -77,3 +77,4 @@ function bfs(graph, start, V) {
 //시간초과
 //visited 배열 대신에 Set 자료구조
 //sequence 객체 대신 Map 자료구조
+//해봤는데도 안돼 안해 

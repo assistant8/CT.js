@@ -1,63 +1,63 @@
-const fs = require("fs");
-const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
-let [VER, ...A] = fs.readFileSync(filePath).toString().trim().split("\n")
-let [V,E,R] = VER.split(" ").map(Number);
-A = A.map(e=>e.split(" ").map(Number))
+// const fs = require("fs");
+// const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+// let [VER, ...A] = fs.readFileSync(filePath).toString().trim().split("\n")
+// let [V,E,R] = VER.split(" ").map(Number);
+// A = A.map(e=>e.split(" ").map(Number))
 
-let graph = {};
-for(let i=1; i<=V; i++){
-  graph[i] = [];
-}
+// let graph = {};
+// for(let i=1; i<=V; i++){
+//   graph[i] = [];
+// }
 
-for(let i=0; i<E; i++) {
-  let edge = A[i];
-  graph[edge[0]].push(edge[1]);
-  graph[edge[1]].push(edge[0]);
-};
+// for(let i=0; i<E; i++) {
+//   let edge = A[i];
+//   graph[edge[0]].push(edge[1]);
+//   graph[edge[1]].push(edge[0]);
+// };
 
-for (const key in graph) {
-  graph[key].sort((a,b)=>a-b)
-}
+// for (const key in graph) {
+//   graph[key].sort((a,b)=>a-b)
+// }
 
-// console.log(graph)
+// // console.log(graph)
   
-const DFS = (graph, startNode) => {
-  const visited = []; // 탐색을 마친 노드들
-  let needVisit = []; // 탐색해야할 노드들
+// const DFS = (graph, startNode) => {
+//   const visited = []; // 탐색을 마친 노드들
+//   let needVisit = []; // 탐색해야할 노드들
 
-  needVisit.push(startNode); // 노드 탐색 시작
+//   needVisit.push(startNode); // 노드 탐색 시작
 
-  while (needVisit.length !== 0) { // 탐색해야할 노드가 남아있다면
-    const node = needVisit.pop(); //need에서 pop
+//   while (needVisit.length !== 0) { // 탐색해야할 노드가 남아있다면
+//     const node = needVisit.pop(); //need에서 pop
 
-    if(!visited.includes(node)){ //pop 한게 아직 방문 안했다면면
-      visited.push(node);
+//     if(!visited.includes(node)){ //pop 한게 아직 방문 안했다면면
+//       visited.push(node);
 
-      const neighbors = graph[node].reverse(); //visit 추가 및 node와 연결된거 뽑아냄 
-      for (const neighbor of neighbors) { //연결된거 하나씩 
-        if (!visited.includes(neighbor)) { //
-          needVisit.push(neighbor);
-        }
-      }
-    }
+//       const neighbors = graph[node].reverse(); //visit 추가 및 node와 연결된거 뽑아냄 
+//       for (const neighbor of neighbors) { //연결된거 하나씩 
+//         if (!visited.includes(neighbor)) { //
+//           needVisit.push(neighbor);
+//         }
+//       }
+//     }
     
-  }
-  return visited;
-};
+//   }
+//   return visited;
+// };
   
-  const visitedResult = DFS(graph,R);
+//   const visitedResult = DFS(graph,R);
 
-    for(let i=1; i<=V; i++) { //i는 각 원소 1~5 
-      for(let k=0; k<visitedResult.length; k++) { //v[k]는 생성된 배열 
-        if(i===visitedResult[k]) {
-          console.log(k+1);
-          break;
-        }
-        if(k===visitedResult.length-1){ 
-          console.log(0)
-        }
-      }
-    }
+//     for(let i=1; i<=V; i++) { //i는 각 원소 1~5 
+//       for(let k=0; k<visitedResult.length; k++) { //v[k]는 생성된 배열 
+//         if(i===visitedResult[k]) {
+//           console.log(k+1);
+//           break;
+//         }
+//         if(k===visitedResult.length-1){ 
+//           console.log(0)
+//         }
+//       }
+//     }
 
 ///위는 답은 맞는데 시간초과 - needvisit set으로 만들기 / visit 000으로도 만들어봤는데 안바꿔짐
 //많은걸 바꿔봤지만 메모리 초과 등도 나버림 
