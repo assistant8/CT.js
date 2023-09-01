@@ -1,53 +1,70 @@
+//제대로 맞는 dfs bfs가 없음 - 맞아도 순서가 다름
+//obj 만들때 정렬을 해야하나 
 const fs = require("fs");
-const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+let [NMV, ...A] = fs.readFileSync(filePath).toString().trim().split("\n")
+let [N, M, V] = NMV.split(" ").map(Number);
+A = A.map(e=>e.split(" ").map(Number));
 
-// 시작할 정점
-const start = Number(input[0].split(" ")[2]);
+let graph = {};
+const objEdges = makeObjEdge(A);
+// console.log(objEdges)
 
-// 각 정점과 연결된 정점을 담은 배열
-const temp = [];
-for (let i = 1; i < input.length; i++) {
-  const left = Number(input[i].split(" ")[0]);
-  const right = Number(input[i].split(" ")[1]);
-  if (temp[left]) temp[left] = [...temp[left], right];
-  else temp[left] = [right];
-  if (temp[right]) temp[right] = [...temp[right], left];
-  else temp[right] = [left];
-}
-// 오름차순으로 정렬
-const nodeList = temp.map((el) => el.sort((a, b) => a - b));
+const orderDFS = dfs(objEdges, V);
+console.log(orderDFS.join(" "))
+const orderBFS = bfs(objEdges, V);
+console.log(orderBFS.join(" "))
 
-// DFS
-const dfsResult = [];
-const dfs = (vertex) => {
-  if (dfsResult.includes(vertex)) return;
-  dfsResult.push(vertex);
-  // 정점과 연결된 정점이 있는 경우만 수행
-  if (nodeList[vertex])
-    nodeList[vertex].forEach((el) => {
-      dfs(el);
-    });
-};
-dfs(start);
+function makeObjEdge(A) {
+    for(let i=1; i<=N; i++) {
+        graph[i]=[];
+    }
+    for(let k=0; k<M; k++) {
+        let node = A[k];
+        graph[node[0]].push(node[1]);
+        graph[node[1]].push(node[0]);
+    }
 
-// BFS
-const bfsResult = [];
-const check = [];
-const queue = [start];
-const bfs = () => {
-  const vertex = queue.shift();
-  if (check[vertex]) return;
-  if (bfsResult.includes(vertex)) return;
-  check[vertex] = true;
-  bfsResult.push(vertex);
-  if (nodeList[vertex])
-    nodeList[vertex].forEach((el) => {
-      queue.push(el);
-    });
-};
-while (queue.length) {
-  bfs(start);
+    return graph;
 }
 
-console.log(...dfsResult);
-console.log(...bfsResult);
+function dfs(graph, startNode) {
+    let visited = new Array(N).fill(0);
+    let needVisit = [startNode];
+    let order = [];
+    
+    while(needVisit.length!==0) {
+        // console.log("!!", needVisit)
+
+        let node = needVisit.pop();
+        if(visited[node-1]===0) {
+            visited[node-1]=1;
+            order.push(node)
+            needVisit.push(...(graph[node].sort((a,b)=>b-a)));
+        }
+    }
+    return order
+}
+
+function bfs(graph, startNode) {
+    let visited = new Array(N).fill(0);
+    let needVisit = [startNode];
+    let order = [];
+
+    while(needVisit.length!==0) {
+        // console.log("!!", needVisit)
+
+        let node = needVisit.shift();
+        if(visited[node-1]===0) {
+            visited[node-1]=1;
+            order.push(node)
+            needVisit.push(...(graph[node].sort((a,b)=>a-b)));
+            // for(let neighbor of graph[node]) {
+            //     if(visited[neighbor-1]===0) {
+            //         needVisit = [...needVisit, neighbor]
+            //     }
+            // }
+        }
+    }
+    return order
+}
