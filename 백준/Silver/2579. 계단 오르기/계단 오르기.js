@@ -1,19 +1,16 @@
-const input = require("fs")
-  .readFileSync("/dev/stdin")
-  .toString()
-  .split("\n")
-  .map(Number);
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+let [N, ...A] = fs.readFileSync(filePath).toString().trim().split("\n");
+A = A.map(Number)
 
-const N = input[0];
+const dp = new Array(N)
+dp[0] = A[0];
+dp[1] = A[1] + A[0];
+dp[2] = A[2] + Math.max(A[0], A[1]);
+// console.log(dp)
 
-const dp = new Array(N + 1);
-
-dp[1] = input[1];
-dp[2] = dp[1] + input[2];
-dp[3] = Math.max(input[1], input[2]) + input[3];
-
-for (let i = 4; i <= N; i++) {
-  dp[i] = Math.max(dp[i - 3] + input[i - 1] + input[i], dp[i - 2] + input[i]);
+for(let i=3; i<N; i++) {
+    dp[i] = Math.max(dp[i-3]+A[i-1]+A[i], dp[i-2]+A[i])
 }
 
-console.log(dp[N]);
+console.log(dp[N-1])
