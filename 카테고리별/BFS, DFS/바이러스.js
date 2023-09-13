@@ -43,43 +43,41 @@ dfs(graph)
 //visited를 includes 하는 것은 이 문제에 한해서는 문제가 안되었다 
 //하지만 어떻게 될 지 모르니 0000 초기화해서 index로 접근해 체크하는 습관을 들이자
 
-const fs = require("fs");
-const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
-let [N, C, ...A] = fs.readFileSync(filePath).toString().trim().split("\n")
-N=Number(N);
-A = A.map(e=>e.split(" ").map(Number))
+// const fs = require("fs");
+// const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+// let [N, C, ...A] = fs.readFileSync(filePath).toString().trim().split("\n")
+// N=Number(N);
+// A = A.map(e=>e.split(" ").map(Number))
 
-// console.log(A)
+// // console.log(A)
 
-const graph = {};
-for(let i=1; i<=N; i++) {
-    graph[i] = [];
-}
+// const graph = {};
+// for(let i=1; i<=N; i++) {
+//     graph[i] = [];
+// }
 
-for(let i=0; i<C; i++) {
-    const node = A[i];
-    graph[node[0]].push(node[1]);
-    graph[node[1]].push(node[0]);
-}
-// console.log(graph)
+// for(let i=0; i<C; i++) {
+//     const node = A[i];
+//     graph[node[0]].push(node[1]);
+//     graph[node[1]].push(node[0]);
+// }
+// // console.log(graph)
 
-function dfs(graph1) {
-    const visited = [];
-    const needVisit = [1];
+// function dfs(graph1) {
+//     const visited = [];
+//     const needVisit = [1];
 
-    while(needVisit.length!==0) {
-        const node = needVisit.pop();
-        if(!visited.includes(node)) {
-            visited.push(node);
-            needVisit.push(...graph1[node])
-        }
-    }
-    console.log(visited.length-1)
-}
+//     while(needVisit.length!==0) {
+//         const node = needVisit.pop();
+//         if(!visited.includes(node)) {
+//             visited.push(node);
+//             needVisit.push(...graph1[node])
+//         }
+//     }
+//     console.log(visited.length-1)
+// }
 
-dfs(graph)
-
-
+// dfs(graph)
 
 
 
@@ -104,6 +102,8 @@ dfs(graph)
 
 
 
+
+//실패의 흔적들 
 
 // const graph = Array(N+1).fill().map(i=>[]);
 // for(let edge of A) {
