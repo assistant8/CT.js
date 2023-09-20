@@ -18,8 +18,6 @@ function BFS(array) {
     const needVisit = [[first, 0]];
 
     while(needVisit.length!==0) {
-        // console.log("needVisit", needVisit)
-
         const [[p,q], depth] = needVisit.shift();
         if(p===last[0] && q===last[1]) return depth //이건 여기에, push 할때 두면 예외가 있을 수도(틀림)
         const X = [-2, -2, -1, -1, 1, 1, 2, 2];
@@ -41,4 +39,6 @@ function BFS(array) {
 //시간초과 해결 
 //needvisit에 푸시할 때만 visited 여부 검사 후 미방문 시 푸시 + 여기서 visited 체크 (그래프)
 //원래 큰 생각없이 위 경우 + ㄹㅇ 그 노드 들어가는 코드 진입 시 = 둘 다 체크 했는데 시간초과 남
-//이유는 모르겠음 - 그게 큰 차이가 나는가..?
+//이유는 모르겠음 - 그게 큰 차이가 나는가..? 단지 배열 index 접근이라 o(1)일거같음 
+//if(graph[p][q]===0)
+//8가지 경우의 수이고 그게 needvisit에서 shift 되야하므로 큐에 상당히 많은게 들어오고 많은 루프 돌게됨, 어쩔수없는듯 
