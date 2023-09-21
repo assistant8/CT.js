@@ -8,10 +8,8 @@ function BFS(first) {
     // console.log("first", first)
     const needVisit = first.map(e=>[e,0]);
     let frontIdx = 0;
-    // console.log("need", needVisit)
     const x = [0, 0, 1, -1];
     const y = [1, -1, 0, 0];
-    console.log(graph)
     
     while(needVisit.length!==0) {
         // console.log("needVisit", needVisit)
@@ -23,11 +21,14 @@ function BFS(first) {
                 const X = p+x[j];
                 const Y = q+y[j];
                 if(X>-1 && X<N && Y>-1 && Y<M) {
-                    if(graph[X][Y] === 0) needVisit.push([[X,Y], depth+1])                        
+                    if(graph[X][Y] === 0) {
+                        needVisit.push([[X,Y], depth+1])
+                    }                        
                 }
             }
         }
-        if(needVisit.length===0) {
+        console.log("need", needVisit, frontIdx)
+        if(needVisit.length===frontIdx) {
             for(const row of graph) {
                 if(row.includes(0)) return -1
             }
@@ -45,7 +46,7 @@ for(let i=0; i<N; i++) {
 // console.log("firstArray", firstArray)
 
 console.log(BFS(firstArray))
-console.log(graph)
+// console.log(graph)
 
 
 //-1인 곳은 가면 안되고, 시작점이 여러곳일 수 있다
@@ -58,4 +59,5 @@ console.log(graph)
 //forEach에선 return도 안먹힘
 //초기지점이 이미 1이면 if(graph[p][q]===0 || depth===0) 처리
 
-//시간초과 
+//시간초과 -> shift를 idx로 변경 
+// https://mine-it-record.tistory.com/530 참고해보자 
