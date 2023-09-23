@@ -2,7 +2,6 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 const nines = fs.readFileSync(filePath).toString().trim().split("\n").map(Number)
 
-// console.log(nines)
 const resultArray = getCombination(nines, 7);
 for(const arr of resultArray) {
     if(arr.reduce((sum, cur) => sum+cur, 0) === 100) {
@@ -13,15 +12,20 @@ for(const arr of resultArray) {
 }
 
 function getCombination(array, selectNumber) {
+    // console.log("array, selectNumber", array, selectNumber)
     const result = [];
     if(selectNumber===1) {
         return array.map(e=>[e])
     }
 
-    array.forEach((element, index, origin)=>{
+    //들어온 array마다 순서대로 fixed (1) -> (2) -> (3)
+    //rest는 fixed 이후의 원소들의 배열 
+    //rest 배열로 다시 combi 구함 = selectNum이 1이 될때까지 반복 
+    //attached = 구한 combi + fixed 붙여 -> result에 푸시 후 리턴 
+    array.forEach((fixed, index, origin)=>{ 
         const rest = origin.slice(index+1);
         const combinations = getCombination(rest, selectNumber - 1);
-        const attached = combinations.map(combination=>[element, ...combination]);
+        const attached = combinations.map(combination=>[fixed, ...combination]);
         result.push(...attached);
     })
 
