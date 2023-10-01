@@ -52,3 +52,6 @@ function isvalid(board, row) { //현재의 줄까지만 검증하네 ㅇㅈ
 //그 줄에서 vaild 해야 다음 줄로 넘어가기 때문에 valid 안한 모든 경우의 수를 탐색 안한다는 점에서 효율적 
 //valid 하자마자 다음 줄로 넘어감 (재귀) - for문 다 돌았는데 다음 재귀 안넘어가면 그 DFS 탈출하고 다음 넘어가버리지 - 그 경우 배제 
 //탭 메모 확인 - 이해하기 
+
+//https://velog.io/@longroadhome/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-LV.3-%EC%B5%9C%EA%B3%A0%EC%9D%98-%EC%A7%91%ED%95%A9-JS-2xs6gra3
+//https://chanhuiseok.github.io/posts/baek-1/
