@@ -1,16 +1,12 @@
 // 백트래킹 
 
-// 소수 판별 함수
-function isPrime(n){
-    if(n <= 2){
-        return true
+function isPrime(n) {
+    if(n===2) return true;
+
+    for(let i=2; i<Math.sqrt(n)+1; i++) {
+        if(n%i===0) return false
     }
-    for(let i = 2; i < Math.sqrt(n)+1 ; i++){
-        if(n%i===0){
-            return false
-        }
-    }
-    return true
+    return true;
 }
 
 //solution
@@ -40,4 +36,4 @@ function solution(nums) {
     return answer
 }
 
-console.log(solution([1,2,7,6,4]))
+// console.log(solution([1,2,7,6,4]))

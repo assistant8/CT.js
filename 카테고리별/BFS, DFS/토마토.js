@@ -16,18 +16,18 @@ function BFS(first) {
         const [[p,q], depth] = needVisit[frontIdx];
         frontIdx++;
         if(graph[p][q]===0 || depth===0) { //미 방문 시 or 초기지점 
-            graph[p][q]++;
-            for(let j=0; j<4; j++) {
+            graph[p][q]++; //방문 처리 
+            for(let j=0; j<4; j++) { //사방으로 
                 const X = p+x[j];
                 const Y = q+y[j];
                 if(X>-1 && X<N && Y>-1 && Y<M) {
                     if(graph[X][Y] === 0) {
-                        needVisit.push([[X,Y], depth+1])
+                        needVisit.push([[X,Y], depth+1]) //사방 중에 미방문된 곳은 need에 푸시 
                     }                        
                 }
             }
         }
-        console.log("need", needVisit, frontIdx)
+        // console.log("need", needVisit, frontIdx)
         if(needVisit.length===frontIdx) {
             for(const row of graph) {
                 if(row.includes(0)) return -1
@@ -43,7 +43,7 @@ for(let i=0; i<N; i++) {
         if(graph[i][k]===1) firstArray.push([i,k])
     }
 }
-// console.log("firstArray", firstArray)
+console.log("firstArray", firstArray)
 
 console.log(BFS(firstArray))
 // console.log(graph)
