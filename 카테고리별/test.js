@@ -93,12 +93,18 @@
 
 //     console.log(queue)
 
-const graph = [[0,0,0,0], [1,0,0,0]]
+// const graph = [[0,0,0,0], [1,0,0,0], 3]
+// const arr = "abcd"
 
-function d() {
-  graph.forEach(e=>{
-    if(e.includes(1)) return -1
-  })
-}
+// function d() {
+//   graph.forEach(e=>{
+//     if(e.includes(1)) return "1"
+//   })
+//   return "no"
+// }
 
-console.log(d())
+// const arr2 = arr.slice(1,3)
+// console.log(arr2)
+// console.log(arr)
+
+
