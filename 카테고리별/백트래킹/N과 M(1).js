@@ -27,7 +27,7 @@ function main() {
     })
 }
 
-main();
+// main();
 
 
 
@@ -37,31 +37,65 @@ main();
 //난 위처럼 순열을 구했고
 //ㄹㅇ 백트래킹 재귀 - 둘의 시간 차이가 큰 듯 - 위는 2000ms, 아래는 200ms 
 // https://velog.io/@dev-redo/%EB%B0%B1%EC%A4%80-15649%EB%B2%88-N%EA%B3%BC-M1-NodeJS
-const [n, m] = [4, 2]
-let answer = '';
 
-const arr = [];
-for (let i = 1; i <= n; i++) arr.push(i);
 
-const visited = new Array(m).fill(false);
-const selected = [];
-function dfs(depth) {
-  if (depth === m) {
-    answer += `${selected.join(' ')}` + '\n';
-    return;
+function solution(n,m) { //4개 숫자 중 3개로 순열 만들기 
+  const seq = [...Array(m)].fill(0); //[0,0,0]
+  const visited = [...Array(n+1)].fill(false); //[0,0,0,0,0] 보기 쉽게 0은 안쓰고 index 1.2.3.4만 사용하도록 
+  let result = [];
+
+  function dfs(k) { 
+      if (k === m) {
+          const arr = [];
+          for (let i=0; i<m; i++) { //0,1,2
+              arr.push(seq[i]);
+          }
+          console.log("insert", arr)
+          return result.push(arr)
+      }
+
+      for (let i=1; i<=n; i++) { //1,2,3,4
+        console.log(seq)
+          if (!visited[i]) {
+              seq[k] = i; //i 사용
+              visited[i] = true; //i 사용 표시 
+              dfs(k+1); //k는 자릿수를 나타냄 
+              visited[i] = false; //seq 완성해서 리턴 후, 뒤 숫자부터 안썼다 처리시킴
+          }
+      }
   }
-
-  for (let i = 0; i < n; i++) {
-    console.log(selected);
-    if (visited[i]) continue;
-
-    selected.push(arr[i]);
-    visited[i] = true;
-    dfs(depth + 1);
-    selected.pop();
-    visited[i] = false;
-  }
+  
+  dfs(0);
+  return result;
 }
 
-// dfs(0);
-// console.log(answer);
+
+//이건 그냥 내가 이해한대로 짠거 - 위 코드와 동일 로직 
+function solution(n, m) { //4P3
+    const seq = new Array(m).fill(0);
+    const visited = new Array(n+1).fill(0);
+    const result = [];
+
+    function dfs(k) {
+        if(k===m) {
+            const arr = seq.slice();
+            console.log(arr);
+            result.push(arr);
+            return 
+        }
+        for(let i=1; i<=n; i++) {
+            if(visited[i]===0) { //i 사용 안했으면 
+                seq[k] = i; //i 사용
+                visited[i]=1; //i 사용 표시
+                dfs(k+1);
+                visited[i]=0;
+            }
+        }
+    }
+
+    dfs(0);
+    return result;
+}
+
+const sol = solution(4,3)
+console.log(sol)
