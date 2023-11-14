@@ -73,7 +73,6 @@ function main() {
       // console.log("copy", copy)
       bfs(virusLoc, copy);  
       // console.log("virus", copy, "\n");
-
       return
     }
     for(let i=0; i<M; i++) { 
@@ -92,7 +91,7 @@ function main() {
 
 function bfs(virus, arr) {
   const needVisit = virus.map(v=>[...v]);
-  // console.log("needVisit", needVisit)
+  console.log("needVisit", needVisit)
   const px = [0,0,1,-1];
   const py = [1,-1,0,0];
   
