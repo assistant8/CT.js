@@ -37,7 +37,7 @@ function solution(n, wires) {
     return answer;
 }
 
-console.log(solution(9, [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]))
+// console.log(solution(9, [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]))
 
 // console.log(a, b, searchTree(a,b), searchTree(b,a))
 // 1 3 1 8 - 13 사이 끊었을 때 (1,3)은 1쪽에 있는 원소 개수 1 반환 / (3,1)은 8 반환
@@ -57,3 +57,55 @@ console.log(solution(9, [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]))
 // links[cur] 배열을 forEach 메서드를 사용하여 반복하면서, 다음 요소를 next 변수에 저장합니다.
 // next가 exception이 아니고, visited[next]가 false인 경우, visited[next]를 true로 설정하고, queue.push(next)를 실행합니다.
 // count 변수를 1 증가시킵니다.
+
+function main(n) {
+
+    const arr = new Array(n);
+  
+    for (let i = 1; i <= n; i++) {
+      arr[i] = i;
+    }
+    
+    // 간선 연결
+    unionParent(arr, 1, 2);
+    unionParent(arr, 2, 3);
+    unionParent(arr, 4, 6);
+    unionParent(arr, 6, 5);
+    unionParent(arr, 7, 8);
+  
+    console.log(arr); // [1, 1, 1, 4, 4, 4, 7, 7]
+  
+    console.log(findeParent(arr, 1, 2)); // true
+    console.log(findeParent(arr, 1, 3)); // true
+    console.log(findeParent(arr, 3, 5)); // false
+    console.log(findeParent(arr, 4, 5)); // true
+    console.log(findeParent(arr, 6, 8)); // false
+  }
+  
+  // 최상위 부모 노드를 찾는 재귀 함수
+  function getParent(arr, n) {
+    if (arr[n] === n) return n;
+  
+    return (arr[n] = getParent(arr, arr[n]));
+  }
+  
+  // 두 개의 노드를 같은 부모 노드로 병합하는 함수
+  function unionParent(arr, a, b) {
+    a = getParent(arr, a);
+    b = getParent(arr, b);
+  
+    // 두 노드 중 부모 노드 값이 더 작은 값으로 합친다
+    if (a < b) arr[b] = a;
+    else arr[a] = b;
+  }
+  
+  // 2개의 노드가 같은 부모 노드를 가졌는지 확인하는 함수
+  function findeParent(arr, a, b) {
+    a = getParent(arr, a);
+    b = getParent(arr, b);
+  
+    if (a === b) return true;
+    else return false;
+  }
+  
+  main(8);
