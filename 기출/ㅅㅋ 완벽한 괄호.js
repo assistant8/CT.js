@@ -3,17 +3,12 @@ function isValidParentheses(s) {
     const parenthesesMap = { '(': ')', '[': ']', '{': '}' };
   
     for (let i = 0; i < s.length; i++) {
-      // console.log(stack)
-
       const currentChar = s[i];
   
-      if (parenthesesMap[currentChar]) {
-        // 열린 괄호인 경우 스택에 push
+      if (parenthesesMap[currentChar]) { // 열린 괄호인 경우 스택에 push
         stack.push(currentChar);
-      } else {
-        // 닫힌 괄호인 경우
-        if (!stack.length || parenthesesMap[stack.pop()] !== currentChar) {
-          // 스택이 비어있거나 짝이 맞지 않으면 false 반환
+      } else { // 닫힌 괄호인 경우
+        if (!stack.length || parenthesesMap[stack.pop()] !== currentChar) { // 스택이 비어있거나 짝이 맞지 않으면 false 반환
           return currentChar;
         }
       }
@@ -41,7 +36,6 @@ function isValidParentheses(s) {
     
     const opening = ['[', '{', '('];
     const closing = [']', '}', ')'];
-    // console.log(b)
 
     for (const bracket of opening) {
       if (b[bracket] < b[closing[opening.indexOf(bracket)]]) {
