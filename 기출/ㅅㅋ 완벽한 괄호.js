@@ -3,6 +3,7 @@ function isValidParentheses(s) {
     const parenthesesMap = { '(': ')', '[': ']', '{': '}' };
   
     for (let i = 0; i < s.length; i++) {
+      console.log("stack", stack)
       const currentChar = s[i];
   
       if (parenthesesMap[currentChar]) { // 열린 괄호인 경우 스택에 push
@@ -61,16 +62,16 @@ function isValidParentheses(s) {
   }
   
   // // 테스트
-  // console.log(isValidParentheses("[]([[]){}"));  // true
+  console.log(isValidParentheses("[]([[]){}"));  // true
   // console.log(isValidParentheses("([[]])"));  // true
   // console.log(isValidParentheses("([[])]"));  // false
   // console.log(isValidParentheses("{([()]))}"));  // false
   // console.log(isValidParentheses("{([()]())}"));  // true
   // console.log(isValidParentheses("({([()]))}"));  // false
 
-  console.log(main("[]([[]){}"))
-  console.log(main("{([()]))}"))
-  console.log(main("(()()()"))
+  // console.log(main("[]([[]){}"))
+  // console.log(main("{([()]))}"))
+  // console.log(main("(()()()"))
 
   // function getOtherSide(char) {
   //   const parenthesesMap = { '(': ')', '[': ']', '{': '}' };
