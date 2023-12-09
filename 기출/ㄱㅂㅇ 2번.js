@@ -55,46 +55,46 @@ let a = solution([[1,2,10], [2,5,8], [3,6,9], [4,20,6], [5,25,5]])
 console.log(a)
 // console.log(a,b,c)
 
-// function solution(data) {
-//     const queue = [];
-//     const answer = [];
-//     const leng = data.length;
-//     const lastTime = 2 * (data[leng-1][1] + data[leng-1][2]);
-//     let coolTime = -1;
-//     let dcount = 0;
-//     let doc;
-//     let idx;
+function solution(data) {
+    const queue = [];
+    const answer = [];
+    const leng = data.length;
+    const lastTime = 2 * (data[leng-1][1] + data[leng-1][2]);
+    let coolTime = -1;
+    let dcount = 0;
+    let doc;
+    let idx;
 
-//     for(let i=0; i<lastTime; i++) {
-//         if(dcount < leng && data[dcount][1] === i && data[dcount][1] != coolTime) { //큐에 넣음
-//             queue.push(data[dcount]);
-//             dcount++;
-//         }
-//         if(coolTime <= i) { //인쇄중 x
-//             if(dcount < leng && data[dcount][1]===coolTime) { //data에서 바로 넣는 애
-//                 answer.push(data[dcount][0]);
-//                 coolTime = data[dcount][2] + i;
-//                 dcount++;
-//             } else {
-//                 if(queue.length===0) continue;
-//                 let min = Infinity;
-//                 for(let k=0; k<queue.length; k++) { //큐 중 하나 선택
-//                     const cur = queue[k];
-//                     if(cur[2] < min) {
-//                         min = cur[2];
-//                         doc = cur;
-//                         idx = k;
-//                     }
-//                 }
-//                 answer.push(queue[idx][0]);
-//                 coolTime = queue[idx][2] + i;
-//                 queue.splice(idx, 1);
-//             }
-//         }
-//         if(answer.length === leng) return answer;
-//     }
-//     return answer;
-// }
+    for(let i=0; i<lastTime; i++) {
+        if(dcount < leng && data[dcount][1] === i && data[dcount][1] != coolTime) { //큐에 넣음
+            queue.push(data[dcount]);
+            dcount++;
+        }
+        if(coolTime <= i) { //인쇄중 x
+            if(dcount < leng && data[dcount][1]===coolTime) { //data에서 바로 넣는 애
+                answer.push(data[dcount][0]);
+                coolTime = data[dcount][2] + i;
+                dcount++;
+            } else {
+                if(queue.length===0) continue;
+                let min = Infinity;
+                for(let k=0; k<queue.length; k++) { //큐 중 하나 선택
+                    const cur = queue[k];
+                    if(cur[2] < min) {
+                        min = cur[2];
+                        doc = cur;
+                        idx = k;
+                    }
+                }
+                answer.push(queue[idx][0]);
+                coolTime = queue[idx][2] + i;
+                queue.splice(idx, 1);
+            }
+        }
+        if(answer.length === leng) return answer;
+    }
+    return answer;
+}
 
 function solution(data) {
     let currentTime = 0;
