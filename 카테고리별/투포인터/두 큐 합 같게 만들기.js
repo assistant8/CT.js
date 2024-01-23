@@ -34,8 +34,8 @@ function solution(queue1, queue2) {
     return answer;
 }
 
-console.log(solution([3, 2, 7, 2], [4,6,5,1]))
-console.log(solution([1,1], [1,5]))
+// console.log(solution([3, 2, 7, 2], [4,6,5,1]))
+// console.log(solution([1,1], [1,5]))
 
 //큐 합 구할 때 이전값에서 빼거나 더해주기만 해야지
 //큐에서 shift 할 필요 있나, 터지면 frontIdx로 할까 => 둘다 해봤는데 fidx로 안하면 시간초과 남
@@ -46,8 +46,10 @@ console.log(solution([1,1], [1,5]))
 //이게 조합으로 구해질까? (섞일 수 있을까 - 3 2 7 2 에서 이후 3 7만 가질 수 있을까) 안됨 => 이건 결국 연속부분수열의 문제
 //그러면 두 배열 중 큰 쪽에서 빼와서 작은 쪽에 넣어주는게 맞다 - 이거말곤 없을 듯 - 근데 이걸 최적화 해보자 
 
+
+
 //투포인터로 다들 푼다, 이걸로도 풀어보자 
-function solution(queue1, queue2) {
+function solution1(queue1, queue2) {
     const queue = [...queue1, ...queue2];
     let sq1 = queue1.reduce(sum, 0);
     let sq2 = queue2.reduce(sum, 0);
@@ -81,3 +83,6 @@ function solution(queue1, queue2) {
 }
 
 const sum = (a, b) => a + b;
+
+console.log(solution1([3, 2, 7, 2], [4,6,5,1]))
+console.log(solution1([1,1], [1,5]))

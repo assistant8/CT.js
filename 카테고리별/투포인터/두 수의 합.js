@@ -20,3 +20,6 @@ while(left < right) {
 }
 
 console.log(count);
+
+// 연속수열 x
+// 정렬 후 양 끝에서부터 sum의 대소에 따라 좁혀오기
