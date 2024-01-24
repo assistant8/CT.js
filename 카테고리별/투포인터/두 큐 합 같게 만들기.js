@@ -50,28 +50,29 @@ function solution(queue1, queue2) {
 
 //투포인터로 다들 푼다, 이걸로도 풀어보자 
 function solution1(queue1, queue2) {
-    const queue = [...queue1, ...queue2];
-    let sq1 = queue1.reduce(sum, 0);
+    const queue = [...queue1, ...queue2]; // 하나로 큐 만들기
+    let sq1 = queue1.reduce(sum, 0); //각 큐의 합
     let sq2 = queue2.reduce(sum, 0);
     
-    if (sq1 === sq2) return 0;
+    if (sq1 === sq2) return 0; //이미 되어있으면
     
-    const t_sum = (sq1+sq2);
+    const t_sum = (sq1+sq2); //두 큐의 합
 
-    if (t_sum%2 != 0) return -1;
+    if (t_sum%2 != 0) return -1; //불가능하면
     
-    const h_sum = t_sum/2;
+    const h_sum = t_sum/2; //=타겟
     let start = 0;
-    let end = queue1.length;
+    let end = queue1.length; //사실상 queue2 시작점
     let cnt = 0;
     
     while(cnt <= queue.length*3) {
+        console.log(sq1)
         if (h_sum === sq1) {
             return cnt;
-        } else if (h_sum > sq1){
+        } else if (h_sum > sq1){ //부족하면 queue2꺼 가져옴
             sq1 += queue[end];
             end++;
-        } else {
+        } else { //초과하면 첫 원소 제거
             sq1 -= queue[start];
             start++;
         }
@@ -79,10 +80,11 @@ function solution1(queue1, queue2) {
         cnt++;
     }
     
-    return -1;
+    return -1; //큐*3이 한사이클인데 그 사이에 안되었으면 불가능
 }
 
-const sum = (a, b) => a + b;
+const sum = (a, b) => a + b; //그저 함수임
 
 console.log(solution1([3, 2, 7, 2], [4,6,5,1]))
-console.log(solution1([1,1], [1,5]))
+// console.log(solution1([1, 2, 1, 2], [1,10,1,2]))
+// console.log(solution1([1,1], [1,5]))
