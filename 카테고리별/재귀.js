@@ -22,7 +22,7 @@ let max = -1;
 const inputArray = [[4,1],[0,1],[4,3],[0,1]];
 const maxSum = getMaxSum(inputArray);
 
-console.log(maxSum);  // 최대값 출력
+// console.log(maxSum);  // 최대값 출력
 
 // O(2^n) n^2보다 최악 
 
@@ -35,11 +35,7 @@ function getPermutation(n,m) {
 
     function dfs(k) {
         if(k===m) {
-            const arr = [];
-            for(let i=0; i<m; i++) {
-                arr.push(seq[i]);
-            }
-            return result.push(arr);
+            return result.push([...seq]);
         }
 
         for(let i=1; i<=n; i++) {
@@ -55,10 +51,11 @@ function getPermutation(n,m) {
     return result;
 }
 
-console.log(getPermutation(4,3))
+// console.log(getPermutation(4,3))
 
 
 // 2^n 경우의 수
+// visited의 유무 차이임 - 중복순열임!
 function getPermutation2(n) {
     const seq = Array(n).fill(0);
     const result = [];
@@ -79,6 +76,6 @@ function getPermutation2(n) {
     return result;
 }
 
-const permutations = getPermutation(4);
+const permutations = getPermutation2(4);
 
 console.log(permutations);
