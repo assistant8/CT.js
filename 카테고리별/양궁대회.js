@@ -49,7 +49,7 @@ function solution(n, info) {
         }
         
         // 차이가 최대인 케이스, 그 중 가장 작은 값을 많이 맞춘 케이스 리턴
-        // 최대면 바로 반영, 같으면 그때야 가장 작은 값 있는지 판단해야 (한꺼번에 불가능)
+        // 최대면 바로 반영, 같으면 그때야 가장 작은 값 있는지 판단해야 (한꺼번에 if(max <= diff) 불가능)
         const diff = sumScore1-sumScore2;
         if(max < diff) {
             max = diff;
@@ -68,7 +68,10 @@ function solution(n, info) {
     return (max<=0) ? [-1] : maxArr
 }
 
-
+console.log(solution(5, [2,1,1,1,0,0,0,0,0,0,0]	));
+console.log(solution(1, [1,0,0,0,0,0,0,0,0,0,0]	));
+console.log(solution(9, [0,0,1,2,0,1,1,1,1,1,1]	));
+console.log(solution(10, [0,0,0,0,0,0,0,0,3,4,3]));
 // 8점과녁 a<=b면 어피치 8점, a=b=0이면 둘다 0점
 // 모든 과녁에서 절대 같으면 안됨
 // 지면 무조건 0개, 이기면 어피치+1개로 이겨야 함 => 각 경우의 수는 2
@@ -78,12 +81,6 @@ function solution(n, info) {
 // 재귀해서 각 경우의 수 중 최대 점수를 구함 
 // 총합 > n 이면 재귀 종료 
 // 최대 갱신 시 이기는 점수인지 판별하는 부분 추가 
-
-// console.log(solution(5, [2,1,1,1,0,0,0,0,0,0,0]	));
-// console.log(solution(1, [1,0,0,0,0,0,0,0,0,0,0]	));
-console.log(solution(9, [0,0,1,2,0,1,1,1,1,1,1]	));
-// console.log(solution(10, [0,0,0,0,0,0,0,0,3,4,3]));
-
 
 
 
@@ -121,3 +118,4 @@ console.log(solution(9, [0,0,1,2,0,1,1,1,1,1,1]	));
 
 // getMax(10, 0, 0, 0);
 // console.log(max, maxArr);
+
