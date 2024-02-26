@@ -56,3 +56,43 @@ function solution(numbers, target) {
 
 //   return result;
 // }
+
+// 240226 다시 풀기
+function solution2(numbers, target) {
+    const leng = numbers.length;
+    const combinations = getPermutation(2, leng);
+    let answer = 0;
+    for(let i=0; i<combinations.length; i++) {
+        const combination = combinations[i];
+        let sum = 0;
+        for(let k=0; k<leng; k++) {
+            sum += (combination[k]==="+" ? numbers[k] : -numbers[k]);
+        }
+        if(target === sum) answer++;
+    }
+    console.log(answer)
+    return answer;
+}
+
+// 중복 순열 2개 중에 4개 뽑기 
+function getPermutation(n, m) {
+    const seq = new Array(m).fill(0);
+    const candi = ["+", "-"];
+    const result = [];
+    
+    function dfs(k) {
+        if(k===m) {
+            const arr = seq.slice();
+            result.push(arr);
+            return result;
+        }
+        for(let i=0; i<n; i++) {
+            seq[k] = candi[i];
+            dfs(k+1);
+        }
+    }
+    dfs(0);
+    return result;
+}
+
+solution([4,1,2,1], 4);
