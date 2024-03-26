@@ -116,3 +116,27 @@ if(y>=0) y = y%n;
 else y = ((y%n) + n)%n;
 
 console.log([x,y])
+
+
+function sol(n,m) {
+    const seq = new Array(m).fill(0);
+    const visited = new Array(n).fill(0);
+    let result = [];
+
+    function dfs(k, idx) {
+        if(k===m) {
+            result.push([...seq]);
+            return result;
+        }
+
+        for(let i=idx; i<=n; i++) {
+            if(!visited[i]) {
+                seq[k] = i;
+                visited[i] = 1;
+                dfs(k+1, i);
+                visited[i] = 0;
+            }
+        }
+    }
+    dfs(0,1);
+}
