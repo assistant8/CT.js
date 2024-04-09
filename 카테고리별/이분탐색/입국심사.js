@@ -61,3 +61,24 @@ console.log(solution(6,[7,10]))
     //     }
     // }
     // arr.sort((a,b)=>a-b);
+
+//240409 풀이 거의 동일
+function solution(n, times) {
+    var answer = 0;
+    times.sort((a,b)=>a-b);
+    let right = times[0] * n;
+    let left = 0;
+    let mid;
+    
+    while(left <= right) {
+        mid = Math.floor((left + right)/2);
+        let count = 0;
+        for(let i=0; i<times.length; i++) {
+            count+=Math.floor(mid/times[i]);
+        }
+        
+        if(count >= n) right = mid-1;
+        else left = mid+1;
+    }
+    return left;
+}
