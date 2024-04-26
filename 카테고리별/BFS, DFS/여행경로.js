@@ -69,9 +69,12 @@ function solution(tickets) {
 //answer에 모두 푸시가 될때까지.
 //다음 장소는 stack.push
 //map에서 next의 배열이 비었고, 마지막이 아니라면 last = next 하고 next = 현재의 다음 shift
-//1번 런타임은 도저히 모르겠음 
+
 
 solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]);
 solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]);
 solution([["ICN", "D"], ["D", "ICN"], ["ICN", "B"]]);
 solution([["ICN", "JFK"], ["ICN", "AAD"], ["JFK", "ICN"]]);
+
+//1번 런타임 오류는 도저히 모르겠음 
+//아마 중복된 티케팅..? 너무 엣지 케이스라 pass https://school.programmers.co.kr/questions/52246

@@ -49,3 +49,45 @@ function getMaxValueKeysCount(obj) {
 
   return maxKeys.length; // 최대값을 가지고 있는 키들의 개수를 반환
 }
+
+///////////////////
+//240426
+function solution(n, edge) {
+    var answer = 0;
+    const e = edge.length;
+    const obj = {};
+    for(let k=1; k<=n; k++) {
+        obj[k] = [];
+    }
+
+    for(let i=0; i<e; i++) {
+        const [start, end] = edge[i];
+        obj[start].push(end);
+        obj[end].push(start);
+    }
+    
+    const visited = Array(n+1).fill(0);
+    const needVisit = [[1, 0]];
+    
+    while(needVisit.length) {
+        const [node, count] = needVisit.shift();
+        for(let i=0; i<obj[node].length; i++) {
+            const nextNode = obj[node][i];
+            if(!visited[nextNode]) {
+                needVisit.push([nextNode, count+1]);
+                if(nextNode !== 1) visited[nextNode] = count+1;
+            }
+        }
+    }
+    
+    let max = -1;
+    visited.forEach((e,idx)=>{
+        if(idx>1 && e>max) max = e;
+    })
+    visited.forEach(e => {if(max===e) answer++})
+    return answer;
+}
+
+//노드 간 최단거리들을 일단 모두 구해야하니 bfs
+//1번에서 시작한 bfs로 거리를 같이 넘겨주자
+//다 끝나면 마지막에 한번 훑으면서 최대 노드 개수를 구해주자 
