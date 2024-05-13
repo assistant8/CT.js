@@ -13,6 +13,7 @@ function solution(queue1, queue2) {
     while(1) {
         if(answer > 4*leng) return -1; // 아래를 이걸로 대체
         // if(answer > 2 && areArraysEqual(origin1, queue1.slice(idx1))) return -1;
+        
         if(sum1===target) {
             return answer;
         } else if(sum1>sum2) {
@@ -66,7 +67,6 @@ function solution1(queue1, queue2) {
     let cnt = 0;
     
     while(cnt <= queue.length*3) {
-        console.log(sq1)
         if (h_sum === sq1) {
             return cnt;
         } else if (h_sum > sq1){ //부족하면 queue2꺼 가져옴

@@ -28,46 +28,48 @@
 //   return ri;
 // };
 
-
 const lowerBound = (arr, target) => {
-    let left = 0;
-    let right = arr.length;
+  let left = 0;
+  let right = arr.length;
 
-    while(left < right) {
-        let mid = Math.floor((left+right)/2);
-        
-        if(arr[mid]>=target) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    // 같아도 왼쪽 탐색
+    if (arr[mid] >= target) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
     }
-    return left;
-}
+  }
+  return left;
+};
 
 const upperBound = (arr, target) => {
-    let left = 0;
-    let right = arr.length;
+  let left = 0;
+  let right = arr.length;
 
-    while(left < right) {
-        let mid = Math.floor((left+right)/2);
-        
-        if(arr[mid]<=target) {
-            left = mid+1;
-        } else {
-            right = mid;
-        }
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    // 같아도 오른쪽 탐색
+    if (arr[mid] > target) {
+      right = mid - 1;
+    } else { // arr[mid] <= target
+      left = mid + 1;
     }
-    return right
-}
+  }
+  return left;
+};
 
 // const array = [1,2,3,3,3,5,5,6];
-const array = [1,2,2,3,3,3,4,6,7];
-console.log(lowerBound(array, 8)); //3을 가지는 애들 중에 가장 최소 index
-console.log(upperBound(array, 8)); //3보다 큰 애들 중에 가장 최소 index
+const array1 = [1, 2, 2, 3, 3, 3, 4, 6, 7];
+const array = [1, 2, 3, 3, 3, 4, 4, 5];
+// console.log(lowerBound(array, 3)); //3을 가지는 애들 중에 가장 최소 index
+console.log(upperBound(array, 3)); //3보다 큰 애들 중에 가장 최소 index
 
 //마지막은 left 나 right 무엇을 반환해도 상관없다.
 // while(left < right)
 // right = mid;
-// let right = arr.length; 
-    //  lower bound 와 upper bound 둘다 유의해야할 점은 모든 데이터가 target보다 작을 경우 데이터 범위 밖의 값을 리턴해야 하기 때문에 일반적인 이진탐색과 달리 right = arr.length 로 지정
+// let right = arr.length;
+//  lower bound 와 upper bound 둘다 유의해야할 점은 모든 데이터가 target보다 작을 경우 데이터 범위 밖의 값을 리턴해야 하기 때문에 일반적인 이진탐색과 달리 right = arr.length 로 지정

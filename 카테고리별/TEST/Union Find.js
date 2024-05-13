@@ -7,7 +7,7 @@ function main(n) {
                       노드 2의 부모 노드: 2,
                       노드 3의 부모 노드: 3
     */
-    const parent = new Array(n);
+    const parent = new Array(n+1);
   
     for (let i = 1; i <= n; i++) {
       parent[i] = i;

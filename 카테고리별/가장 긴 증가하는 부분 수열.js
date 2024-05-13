@@ -47,3 +47,29 @@ console.log(Math.max(...dp));
 // }
 
 // console.log(max)
+
+
+
+function sol() {
+    let dp = Array(arr.length).fill(1);
+    const arr = [100,1,2,3,101,4,5,6,102,7,8];
+
+    for(let i=0; i<arr.length; i++) { //i는 현재 원소
+        let temp = [];
+        for(let k=0; k<i; k++) { //k는 이전 원소 중 i보다 작은 애들
+            if(arr[i]>arr[k]) {
+                temp.push(k);
+            }
+        }
+        
+        let max = 0;
+        for(let j=0; j<temp.length; j++) {
+            const idx = temp[j];
+            if(max < dp[idx]) max = dp[idx];
+        }
+        dp[i] = max+1;
+    }
+    console.log(dp)
+}
+
+// sol();

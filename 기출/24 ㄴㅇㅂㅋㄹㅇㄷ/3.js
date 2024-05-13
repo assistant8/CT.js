@@ -61,4 +61,28 @@ function solution(A, S) {
 
 const A = [0, 4, 3, -1];
 const S = 2;
-solution(A, S)
+solution2(A, S)
+
+function solution2(A, S) {
+    const n = A.length;
+    let count = 0;
+    
+    // 누적 합 배열 생성
+    const prefixSum = new Array(n + 1).fill(0);
+    for (let i = 1; i <= n; i++) {
+        prefixSum[i] = prefixSum[i - 1] + A[i - 1];
+    }
+
+    // 부분 배열의 합과 길이를 계산하여 조건을 만족하는지 확인
+    for (let i = 1; i <= n; i++) {
+        for (let j = i; j <= n; j++) {
+            const sum = prefixSum[j] - prefixSum[i - 1];
+            const length = j - i + 1;
+            if (sum / length === S) {
+                count++;
+            }
+        }
+    }
+    
+    console.log(count);
+}

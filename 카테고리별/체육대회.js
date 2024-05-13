@@ -37,3 +37,42 @@ function solution(ability) {
 }
 
 //10P10, person P event - [1,5,4] 1~5사람 중 겹치지 않게 3 종목 
+
+
+// 위보단 아래가 시간 효율적 + 메모리 효율적
+function solution2(ability) {
+    var answer = 0;
+    const person = ability.length;
+    const event = ability[0].length;
+    const visited = Array(person).fill(0);
+    const seq = Array(event).fill(0);
+    let max = 0;
+    // console.log(person, event)
+    
+    function dfs(k) {
+        if(k===event) {
+            const result = seq.slice();
+            let sum = 0;
+            for(let j=0; j<event; j++) {
+                const value = result[j];
+                sum += ability[value][j];
+            }
+            if(max < sum) max = sum;
+            return;
+        }
+        for(let i=0; i<person; i++) {
+            if(visited[i]) continue;
+            seq[k] = i;
+            visited[i] = 1;
+            dfs(k+1);
+            visited[i] = 0;
+        }
+    }
+    
+    dfs(0);
+    
+    
+    return max;
+}
+
+//10P10, person P event - [1,5,4] 1~5사람 중 겹치지 않게 3 종목

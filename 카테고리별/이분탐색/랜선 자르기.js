@@ -15,6 +15,7 @@ let result = 0; // 결과값 저장 변수
 while (left <= right) {
     let mid = Math.floor((left + right) / 2);
 
+    //같아도 오른쪽 탐색 
     if (cutline(mid) >= N) { // 원하는 개수 이상을 만들 수 있는 경우
         result = mid; // 결과값 갱신
         left = mid + 1; // 더 큰 길이 찾기
