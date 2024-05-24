@@ -63,16 +63,16 @@ const readline = require('readline');
 // 1 1 1 0 0 0
 
 // 기본 형태
-// const readline = require('readline');
+const readline = require('readline');
 
-// (async () => {
-// let rl = readline.createInterface({ input: process.stdin });
+(async () => {
+let rl = readline.createInterface({ input: process.stdin });
 
-// 	for await (const line of rl) {
-// 		console.log('Hello Goorm! Your input is', line);
-// 		rl.close();
-// 	}
+	for await (const line of rl) {
+		console.log('Hello Goorm! Your input is', line);
+		rl.close();
+	}
 	
-// 	process.exit();
+	process.exit();
 
-// })();
+})();
