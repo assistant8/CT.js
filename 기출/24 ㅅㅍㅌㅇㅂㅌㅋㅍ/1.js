@@ -40,4 +40,18 @@ function dfs(k) {
 }
 
 dfs(0);
+console.log(max, min)
 console.log(max + min);
+
+// 위는 4P4를 통해 모든 경우의 수 비교, n이 작아서 가능했음
+
+// 아래는 2,21이 있을 때 221 vs 212 비교하여 sort 
+  // sort는 앞 뒤를 가지고 연산하여 그 값을 비교해 뒤바꾸면 정렬하는 거임 
+  // 2 > 21 
+
+const input2 = input[0].split(" ");
+console.log(input2)
+input2.sort((a,b)=>(b+a)-(a+b));
+console.log(input2)
+input2.sort((a,b)=>(a+b)-(b+a));
+console.log(input2)

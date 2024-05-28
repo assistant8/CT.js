@@ -11,11 +11,11 @@ const array = [];
 if (mode === "encrypt") {
   for (let i = 0; i < leng; i++) {
     const char = secretString[i];
-    secret.push(char.charCodeAt(0) - 97);
+    secret.push(char.charCodeAt(0) - 97); // a = 97 = 0
     const char2 = msgString[i];
     msg.push(char2.charCodeAt(0) - 97);
     let node = secret[i] + msg[i];
-    if (node > 25) node = (node % 25) - 1;
+    if (node > 25) node = (node % 25) - 1; //
     array.push(node);
   }
   if (rotate >= 0) rotateLeft(rotate);
@@ -28,7 +28,7 @@ if (mode === "encrypt") {
     strArray.push(char);
   }
   console.log(strArray.join(""));
-} else {
+} else { //decrypt
   for (let i = 0; i < leng; i++) {
     const char = secretString[i];
     secret.push(char.charCodeAt(0) - 97);
@@ -85,3 +85,7 @@ function rotateRight(num) {
 //합해진 배열인데, 여기서 secretword를 뺌
 //음수가 나오면 +25+1
 //해당 배열을 알파벳으로 바꿈
+
+// if (node > 25) node = (node % 25) - 1;
+  // 유니코드 0~25까지 알파벳은 26개, 26이면 a이고 26%25-1 = 0
+  // 돌이켜보니 node = (node % 26) or node -= 26 이게 로직상 맞는 것 같음 
