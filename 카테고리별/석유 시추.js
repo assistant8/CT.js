@@ -53,7 +53,7 @@ function solution(land) {
     return Math.max(...array);
 }
 
-// 모든 곳 한번 훑어서 각 좌표 당 얼만큼의 공간의 그룹에 연결되어있는지 map으로 기록 후 합산하는 방법 
+// 모든 곳 한번 훑어서 그룹 당 어떤 행과 연결되어있는지 map으로 기록 후 합산하는 방법 (key에 count 기록)
 // visit 시 -1
 // 그룹 : 좌표 
 
