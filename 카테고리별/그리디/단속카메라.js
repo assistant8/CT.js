@@ -56,3 +56,27 @@ function solution(routes) {
 
 console.log(solution([[-20,-15]]))
 //입력 테케 모두 맞는데 제출 테케 틀림.. 뭐가 틀린지 모르겠음
+
+
+
+/////////////////////////
+//아래가 정석 그리디 풀이
+function solution2(routes) {
+    var count = 0;
+    let prev = -30001;
+    routes.sort((a,b) => a[1]-b[1]);
+    
+    for(let route of routes) {
+        const [start, end] = route;
+        if(start > prev) {
+            prev = end;
+            count++;
+        }
+    }
+    return count;
+}
+
+// 도착 순 정렬
+// routes 반복문
+// 처음 원소 end를 prev, count++
+// 이후 원소 start > prev 이면 prev = end, count++
