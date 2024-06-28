@@ -26,5 +26,36 @@ rl.on("line", function (line) {
       else lcs[i][k] = Math.max(lcs[i - 1][k], lcs[i][k - 1]);
     }
   }
-    console.log(lcs[first.length][second.length]);
+//   console.log(lcs)
+
+  const answer = [];
+  let i = first.length;
+  let k = second.length;
+  while (i > 0 && k > 0) {
+    if (lcs[i][k] === lcs[i - 1][k]) i--;
+    else if (lcs[i][k] === lcs[i][k - 1]) k--;
+    else {
+      answer.push(first[i - 1]);
+      i--;
+      k--;
+    }
+  }
+  const num = lcs[first.length][second.length];
+  console.log(num);
+  num !== 0 && console.log(answer.reverse().join(""));
+  process.exit();
 });
+
+//lcs 배열 생성
+//두 배열 반복문 돌면서 각 문자열 비교
+    // 0 포함 시 무조건 0
+    // 같으면 i-1 k-1꺼에 +1
+    // 다르면 i-1 k / i k-1 중 큰 값
+
+//lcs 반대로 돌면서 각 문자열 비교
+    //lcs가 0이면 종료
+    //lcs값을 i-1 k / i k-1 과 비교해 동일한 값 찾음
+        //있으면 해당 값 -1
+        //없으면 i-1 k-1 후 해당 문자 push
+
+//종료 시 문자.reverse
